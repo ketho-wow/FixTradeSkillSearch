@@ -1,0 +1,9 @@
+## Interface: 70000
+## Version: 1.0
+## Title: FixTradeSkillSearch
+## Notes: Fixes the TradeSkill search bar
+## Author: Ketho @ EU-Boulderfist
+## LoadOnDemand: 1
+## LoadWith: Blizzard_TradeSkillUI
+
+FixTradeSkillSearch.lua
