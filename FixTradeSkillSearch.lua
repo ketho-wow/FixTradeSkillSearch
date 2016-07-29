@@ -13,7 +13,7 @@ hooksecurefunc("ChatEdit_InsertLink", function(text) -- shift-clicked
 		-- search needs to be lowercase for .SetRecipeItemNameFilter
 		TradeSkillFrame.SearchBox:SetText(search:lower())
 		
-		-- jump to the the recipe
+		-- jump to the recipe
 		if spell then -- can only select recipes on the learned tab
 			if PanelTemplates_GetSelectedTab(TradeSkillFrame.RecipeList) == 1 then
 				TradeSkillFrame:SelectRecipe(tonumber(spellId))
@@ -32,5 +32,15 @@ hooksecurefunc("ChatEdit_InsertLink", function(text) -- shift-clicked
 	end
 end)
 
--- increase search box width -- up from 112
+-- increase search box width (up from 112)
 TradeSkillFrame.SearchBox:SetWidth(200)
+
+-- make it only split stacks with shift-rightclick if the TradeSkillFrame is open
+-- shift-leftclick should be reserved for the search box
+hooksecurefunc("ContainerFrameItemButton_OnModifiedClick", function(self, button)
+	if TradeSkillFrame and TradeSkillFrame:IsShown() then
+		if button == "LeftButton" then
+			StackSplitFrame:Hide()
+		end
+	end
+end)
