@@ -44,3 +44,12 @@ hooksecurefunc("ContainerFrameItemButton_OnModifiedClick", function(self, button
 		end
 	end
 end)
+
+-- temp fix Blizzard bug for when clicking header items
+local oldGetRecipeLink = C_TradeSkillUI.GetRecipeLink
+
+function C_TradeSkillUI.GetRecipeLink(recipeID)
+	if recipeID then
+		return oldGetRecipeLink(recipeID)
+	end
+end
