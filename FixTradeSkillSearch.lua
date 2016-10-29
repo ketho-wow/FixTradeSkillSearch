@@ -11,7 +11,7 @@ hooksecurefunc("ChatEdit_InsertLink", function(text) -- shift-clicked
 		if not search then return end
 		
 		-- search needs to be lowercase for .SetRecipeItemNameFilter
-		TradeSkillFrame.SearchBox:SetText(search:lower())
+		TradeSkillFrame.SearchBox:SetText(search)
 		
 		-- jump to the recipe
 		if spell then -- can only select recipes on the learned tab
@@ -44,12 +44,3 @@ hooksecurefunc("ContainerFrameItemButton_OnModifiedClick", function(self, button
 		end
 	end
 end)
-
--- temp fix Blizzard bug for when clicking header items
-local oldGetRecipeLink = C_TradeSkillUI.GetRecipeLink
-
-function C_TradeSkillUI.GetRecipeLink(recipeID)
-	if recipeID then
-		return oldGetRecipeLink(recipeID)
-	end
-end
